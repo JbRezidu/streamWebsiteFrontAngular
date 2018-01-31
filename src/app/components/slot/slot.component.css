@@ -1,0 +1,7 @@
+.slot {
+  width: 200px;
+  height: 40px;
+  border: solid 1px green;
+  margin: 5px;
+  background-color: grey;
+}
