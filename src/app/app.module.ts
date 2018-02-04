@@ -3,24 +3,38 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { StreamerService } from './shared/services/streamer.service';
+import { StreamerService } from './shared/services/streamer/streamer.service';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { DayComponent } from './components/day/day.component';
 import { SlotComponent } from './components/slot/slot.component';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ConnectionComponent } from './components/connection/connection.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
+import { AuthenticationService } from './shared/services/authentication/authentication.service';
 @NgModule({
   declarations: [
     AppComponent,
     ScheduleComponent,
     DayComponent,
-    SlotComponent
+    SlotComponent,
+    ConnectionComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    FormsModule,
   ],
-  providers: [StreamerService],
+  providers: [StreamerService, AuthenticationService],
+  entryComponents: [ConnectionComponent, AppComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

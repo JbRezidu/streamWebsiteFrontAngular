@@ -15,7 +15,6 @@ export class SlotComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.slotRef);
     this.slotRef.nativeElement.style.backgroundColor = (this.slot.slot || {}).color || 'grey';
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { StreamerService } from './shared/services/streamer.service';
-
+import { StreamerService } from './shared/services/streamer/streamer.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConnectionComponent } from './components/connection/connection.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,11 +18,15 @@ export class AppComponent {
 
   streamers = [];
 
-  constructor(private streamerService: StreamerService) {
+  constructor(private streamerService: StreamerService, public dialog: MatDialog) {
     this.anotherOtherTitle = this.title + ' ' + this.anotherTitle;
     this.streamerService.getStreamers().subscribe(streamers => {
-      console.log(streamers);
       this.streamers = streamers;
     });
+  }
+
+  test() {
+    console.log('click');
+    this.dialog.open(ConnectionComponent, { width: '250px' });
   }
 }
