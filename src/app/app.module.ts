@@ -15,6 +15,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from './shared/services/authentication/authentication.service';
+import {NgReduxModule, NgRedux} from '@angular-redux/store';
+import {IAppState, rootReducer, INITIAL_STATE} from './shared/store/index';
+import {AuthenticationActions} from './shared/store/actions/authentication/authentication.actions';
+import {initApp} from './init';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,9 +37,15 @@ import { AuthenticationService } from './shared/services/authentication/authenti
     MatInputModule,
     MatButtonModule,
     FormsModule,
+    NgReduxModule,
   ],
-  providers: [StreamerService, AuthenticationService],
+  providers: [StreamerService, AuthenticationService, AuthenticationActions],
   entryComponents: [ConnectionComponent, AppComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(ngRedux: NgRedux<IAppState>, private authencationActions: AuthenticationActions) {
+    ngRedux.configureStore(rootReducer, INITIAL_STATE);
+    initApp(this.authencationActions);
+  }
+}

@@ -17,7 +17,6 @@ export class ConnectionComponent {
   ) { }
 
   login() {
-    console.log(this.password);
     this.authenticationService.login(this.password);
   }
 }

@@ -2,7 +2,13 @@
 <div style="text-align:center">
   <h1>
     Welcome to {{title}}! {{anotherTitle}} {{anotherOtherTitle}}
-    <button (click)="test()">Connexion</button>
+    <ng-container *ngIf="pseudo">
+      <br/>
+      <span>Bonjour {{pseudo}}</span>
+    </ng-container>
+    <br/>
+    <button *ngIf="!pseudo" (click)="login()">Connexion</button>
+    <button *ngIf="pseudo" (click)="logout()">Déconnexion</button>
   </h1>
   <app-schedule></app-schedule>
 </div>
