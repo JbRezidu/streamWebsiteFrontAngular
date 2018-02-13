@@ -9,6 +9,7 @@
     <br/>
     <button *ngIf="!pseudo" (click)="login()">Connexion</button>
     <button *ngIf="pseudo" (click)="logout()">Déconnexion</button>
+    <button (click)="getUsers()">Get users</button>
   </h1>
   <app-schedule></app-schedule>
 </div>

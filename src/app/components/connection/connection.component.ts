@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-import { AuthenticationService } from '../../shared/services/authentication/authentication.service';
+import {Component} from '@angular/core';
+import {MatDialogRef} from '@angular/material/dialog';
+import {AuthenticationActions} from '../../shared/store/actions/authentication/authentication.actions';
 
 @Component({
   selector: 'app-connection',
@@ -12,11 +12,11 @@ export class ConnectionComponent {
   password: string;
 
   constructor(
-    private authenticationService: AuthenticationService,
+    private authenticationActions: AuthenticationActions,
     public dialogRef: MatDialogRef<ConnectionComponent>,
-  ) { }
+  ) {}
 
   login() {
-    this.authenticationService.login(this.password);
+    this.authenticationActions.login(this.password);
   }
 }

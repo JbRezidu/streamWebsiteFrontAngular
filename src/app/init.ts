@@ -5,6 +5,6 @@ import {AuthenticationActions} from './shared/store/actions/authentication/authe
 export function initApp(authenticationActions: AuthenticationActions) {
   const authentication = Cookies.getJSON('authentication');
   if (!_.isEmpty(authentication)) {
-    authenticationActions.login(authentication);
+    authenticationActions.setAuthenticationInStore(authentication);
   }
 }

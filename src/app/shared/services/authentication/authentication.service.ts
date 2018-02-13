@@ -1,26 +1,32 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import {AuthenticationActions} from '../../store/actions/authentication/authentication.actions';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
 import * as Cookies from 'js-cookie';
 import * as moment from 'moment';
+import 'rxjs/add/operator/do';
 
 @Injectable()
 export class AuthenticationService {
 
-  constructor(private http: HttpClient, private authenticationAction: AuthenticationActions) { }
+  constructor(private http: HttpClient) {}
 
-  login(password) {
+  login(password): Observable<any> {
     const url = `http://localhost:3000/api/login`;
-    return this.http.post(url, { password }).subscribe((result: any) => {
-      delete(result.color);
-      this.authenticationAction.login(result);
+    return this.http.post(url, {password}).do((result: any) => {
       // set the cookies
       const expireDate = moment(new Date()).add(30, 'm').toDate();
       Cookies.set('authentication', result, {expires: expireDate});
     });
   }
 
-  logout() {
+  logout(): Observable<any> {
+    const url = 'http://localhost:3000/api/logout';
+    return this.http.post(url, {}).do(() => {
+      this.removeAuthenticationCookie();
+    });
+  }
+
+  removeAuthenticationCookie() {
+    Cookies.remove('authentication');
   }
 }

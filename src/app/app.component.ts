@@ -48,4 +48,8 @@ export class AppComponent {
   logout() {
     this.authenticationActions.logout();
   }
+
+  getUsers() {
+    this.streamerService.getStreamers().subscribe();
+  }
 }
