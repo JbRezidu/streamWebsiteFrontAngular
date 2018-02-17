@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {WeekActions} from '../../shared/store/actions/week/week.actions';
+import {select} from '@angular-redux/store';
+import {Observable} from 'rxjs/Observable';
+import {WeekState} from '../../shared/store/reducers/week/week.reducer';
 
 @Component({
   selector: 'app-schedule',
@@ -7,9 +11,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScheduleComponent implements OnInit {
 
+  @select(['week']) week$: Observable<any>;
+
   weekDays = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'];
 
-  constructor() { }
+  week: WeekState;
+
+  constructor(private weekActions: WeekActions) {
+    this.weekActions.getCurrentWeek();
+    this.week$.subscribe(week => {
+      console.log(week);
+      this.week = week;
+    });
+  }
 
   ngOnInit() {
   }

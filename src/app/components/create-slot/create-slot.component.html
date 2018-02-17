@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Ajout d'un créneau de stream</h1>
+<mat-form-field>
+  <input matInput [(ngModel)]="title" type="text" placeholder="Titre du stream">
+</mat-form-field>
+<mat-form-field>
+  <textarea matInput placeholder="Description du stream" matTextareaAutosize matAutosizeMinRows="1"
+            matAutosizeMaxRows="5" [(ngModel)]="description"></textarea>
+</mat-form-field>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Annuler</button>
+  <button mat-button (click)="createSlot()">Ajouter le slot</button>
+</div>

@@ -25,7 +25,7 @@ export class CustomHttpInterceptor implements HttpInterceptor {
       authReq = req.clone({
         setHeaders: {
           Token: this.authentication.token,
-          Streamer: this.authentication.pseudo
+          Streamer: this.authentication.pseudo,
         }
       });
     }
