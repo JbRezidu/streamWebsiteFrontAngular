@@ -1,23 +1,35 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import * as _ from 'lodash';
 import {MatDialog} from '@angular/material/dialog';
 import {CreateSlotComponent} from '../create-slot/create-slot.component';
 import {DayActions} from '../../shared/store/actions/day/day.actions';
+import * as _cloneDeep from 'lodash/cloneDeep';
+import * as _get from 'lodash/get';
+import {SlotSummaryComponent} from '../slot-summary/slot-summary.component';
 
 @Component({
   selector: 'app-day',
   templateUrl: './day.component.html',
   styleUrls: ['./day.component.css'],
 })
-export class DayComponent implements OnInit {
+export class DayComponent {
 
   @Input()
   header: string;
 
-  @Input()
-  day;
+  private _day;
 
-  slots = [
+  @Input()
+  set day(day: any) {
+    this._day = day;
+    this.initDaySlots();
+  }
+
+  get day() {
+    return this._day;
+  }
+
+  private initialSlots = [
     {
       startHour: 16
     },
@@ -47,33 +59,43 @@ export class DayComponent implements OnInit {
     },
   ];
 
-  constructor(private dialog: MatDialog, private dayActions: DayActions) { }
+  slots;
 
-  ngOnInit() {
+  constructor(private dialog: MatDialog, private dayActions: DayActions) {}
+
+  initDaySlots() {
+    this.slots = _cloneDeep(this.initialSlots);
     const serverSlots = this.day.slots;
     serverSlots.forEach(serverSlot => {
       const effectiveSlot = _.find(this.slots, {startHour: serverSlot.startHour});
       serverSlot.color = serverSlot.streamer.color;
       serverSlot.streamerPseudo = serverSlot.streamer.pseudo;
-      delete(serverSlot.streamer);
-      delete(serverSlot.duration);
+      delete (serverSlot.streamer);
+      delete (serverSlot.duration);
       effectiveSlot.slot = serverSlot;
     });
   }
 
   handleClickOnSlot(clickedSlot) {
-    console.log(this.day._id);
-    console.log(clickedSlot);
-    const dialogRef = this.dialog.open(CreateSlotComponent, {width: '50%'});
-    dialogRef.afterClosed().subscribe(slot => {
-      slot.startHour = clickedSlot.startHour;
-      slot.dayId = this.day._id;
-      console.log('our');
-      if (slot) {
-        console.log('in actions');
-        this.dayActions.addSlotToDay(slot);
-      }
-    });
+    if (_get(clickedSlot, 'slot.title')) {
+      const dialogRef = this.dialog.open(SlotSummaryComponent, {
+        data: clickedSlot.slot,
+        width: '50%',
+      });
+      dialogRef.afterClosed().subscribe(action => {
+        if (action === 'DELETE') {
+          this.dayActions.removeSlotToDay(clickedSlot.slot._id, this.day._id);
+        }
+      });
+    } else {
+      const dialogRef = this.dialog.open(CreateSlotComponent, {width: '50%'});
+      dialogRef.afterClosed().subscribe(slot => {
+        if (slot) {
+          slot.startHour = clickedSlot.startHour;
+          slot.dayId = this.day._id;
+          this.dayActions.addSlotToDay(slot);
+        }
+      });
+    }
   }
-
 }

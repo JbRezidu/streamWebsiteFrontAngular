@@ -1,4 +1,4 @@
-<div #slotRef class="slot" >
+<ng-container *ngIf="(slot.slot || {}).title">
   <div>{{(slot.slot || {}).title}}</div>
   <div>{{(slot.slot || {}).streamerPseudo}}</div>
-</div>
+</ng-container>

@@ -1,4 +1,5 @@
-.slot {
+:host {
+  display: block;
   width: 200px;
   height: 40px;
   border: solid 1px green;

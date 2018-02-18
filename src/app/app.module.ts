@@ -19,6 +19,7 @@ import {DayComponent} from './components/day/day.component';
 import {SlotComponent} from './components/slot/slot.component';
 import {ConnectionComponent} from './components/connection/connection.component';
 import {CreateSlotComponent} from './components/create-slot/create-slot.component';
+import {SlotSummaryComponent} from './components/slot-summary/slot-summary.component';
 
 /** SERVICES **/
 import {StreamerService} from './shared/services/streamer/streamer.service';
@@ -38,7 +39,8 @@ import {DayActions} from './shared/store/actions/day/day.actions';
     DayComponent,
     SlotComponent,
     ConnectionComponent,
-    CreateSlotComponent
+    CreateSlotComponent,
+    SlotSummaryComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,7 +67,7 @@ import {DayActions} from './shared/store/actions/day/day.actions';
       multi: true
     },
   ],
-  entryComponents: [ConnectionComponent, AppComponent, CreateSlotComponent],
+  entryComponents: [ConnectionComponent, AppComponent, CreateSlotComponent, SlotSummaryComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -11,4 +11,9 @@ export class DayService {
     const url = 'http://localhost:3000/api/slot/add';
     return this.http.post(url, slot);
   }
+
+  removeSlotToDay(slotId, dayId): Observable<any> {
+    const url = `http://localhost:3000/api/slot?slotId=${slotId}&dayId=${dayId}`;
+    return this.http.delete(url);
+  }
 }
