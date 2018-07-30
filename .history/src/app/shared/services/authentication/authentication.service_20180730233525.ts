@@ -11,20 +11,20 @@ export class AuthenticationService {
 
   login(password): Observable<any> {
     const url = `http://localhost:3000/api/login`;
-    return this.http.post(url, { password }).pipe(tap((result: any) => {
+    return this.http.post(url, { password }).tap((result: any) => {
       // set the cookies
       const expireDate = moment(new Date())
         .add(30, "m")
         .toDate();
       Cookies.set("authentication", result, { expires: expireDate });
-    }));
+    });
   }
 
   logout(): Observable<any> {
     const url = "http://localhost:3000/api/logout";
-    return this.http.post(url, {}).pipe(tap(() => {
+    return this.http.post(url, {}).tap(() => {
       this.removeAuthenticationCookie();
-    }));
+    });
   }
 
   removeAuthenticationCookie() {

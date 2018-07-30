@@ -17,14 +17,14 @@ export class AuthenticationService {
         .add(30, "m")
         .toDate();
       Cookies.set("authentication", result, { expires: expireDate });
-    }));
+    });
   }
 
   logout(): Observable<any> {
     const url = "http://localhost:3000/api/logout";
-    return this.http.post(url, {}).pipe(tap(() => {
+    return this.http.post(url, {}).tap(() => {
       this.removeAuthenticationCookie();
-    }));
+    });
   }
 
   removeAuthenticationCookie() {

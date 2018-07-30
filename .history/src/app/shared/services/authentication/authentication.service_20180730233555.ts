@@ -24,7 +24,7 @@ export class AuthenticationService {
     const url = "http://localhost:3000/api/logout";
     return this.http.post(url, {}).pipe(tap(() => {
       this.removeAuthenticationCookie();
-    }));
+    });
   }
 
   removeAuthenticationCookie() {

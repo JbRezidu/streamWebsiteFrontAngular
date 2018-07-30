@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WeekActions} from '../../shared/store/actions/week/week.actions';
 import {select} from '@angular-redux/store';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {WeekState} from '../../shared/store/reducers/week/week.reducer';
 
 @Component({

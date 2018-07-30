@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {StreamerService} from './shared/services/streamer/streamer.service';
 import {MatDialog} from '@angular/material/dialog';
 import {ConnectionComponent} from './components/connection/connection.component';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {select} from '@angular-redux/store';
 import {AuthenticationActions} from './shared/store/actions/authentication/authentication.actions';
 
