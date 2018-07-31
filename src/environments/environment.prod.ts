@@ -1,3 +1,10 @@
+const baseAPI = 'http://lebdg.fr:3000';
+
 export const environment = {
-  production: true
+  production: true,
+  week: {
+    currentWeek: (today) => {
+      return `${baseAPI}/api/weekByDate/${today}`;
+    }
+  }
 };

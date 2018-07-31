@@ -1,5 +1,5 @@
-import {WEEK_UPDATE} from '../../actions/constants';
-import {CustomAction} from '../../store.interfaces';
+import { GET_CURRENT_WEEK_SUCCEED, INSTANCIATE_CURRENT_WEEK_SUCCEED } from '../../actions/constants';
+import { CustomAction } from '../../store.interfaces';
 
 export interface WeekState {
   days: any[];
@@ -15,7 +15,8 @@ const INITIAL_STATE: WeekState = {
 
 export default function weekReducer(lastState = INITIAL_STATE, action: CustomAction) {
   switch (action.type) {
-    case WEEK_UPDATE:
+    case GET_CURRENT_WEEK_SUCCEED:
+    case INSTANCIATE_CURRENT_WEEK_SUCCEED:
       return Object.assign({}, lastState, action.payload);
 
     default:

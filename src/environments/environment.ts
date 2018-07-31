@@ -2,8 +2,16 @@
 // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+const baseAPI = 'http://localhost:3000';
+
 export const environment = {
-  production: false
+  production: false,
+  week: {
+    currentWeek: today => {
+      return `${baseAPI}/api/weekByDate/${today}`;
+    },
+    instanciateCurrentWeek: `${baseAPI}/api/instanciateCurrentWeek`,
+  },
 };
 
 /*
