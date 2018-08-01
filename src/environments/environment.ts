@@ -12,6 +12,9 @@ export const environment = {
     },
     instanciateCurrentWeek: `${baseAPI}/api/instanciateCurrentWeek`,
   },
+  game: {
+    getGames: `${baseAPI}/api/games`
+  }
 };
 
 /*

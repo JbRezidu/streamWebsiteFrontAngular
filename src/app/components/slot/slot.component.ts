@@ -3,7 +3,7 @@ import {Component, OnInit, Input, ElementRef, ViewChild, Renderer2} from '@angul
 @Component({
   selector: 'app-slot',
   templateUrl: './slot.component.html',
-  styleUrls: ['./slot.component.css']
+  styleUrls: ['./slot.component.scss']
 })
 export class SlotComponent {
 

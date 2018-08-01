@@ -4,7 +4,7 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 @Component({
   selector: 'app-slot-summary',
   templateUrl: './slot-summary.component.html',
-  styleUrls: ['./slot-summary.component.css']
+  styleUrls: ['./slot-summary.component.scss']
 })
 export class SlotSummaryComponent {
 

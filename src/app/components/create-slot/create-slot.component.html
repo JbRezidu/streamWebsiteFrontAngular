@@ -6,6 +6,14 @@
   <textarea matInput placeholder="Description du stream" matTextareaAutosize matAutosizeMinRows="1"
             matAutosizeMaxRows="5" [(ngModel)]="description"></textarea>
 </mat-form-field>
+<mat-form-field>
+  <input matInput placeholder="Jeu du stream (facultatif)" aria-label="Jeu" [matAutocomplete]="auto" [formControl]="gameControl">
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let game of filteredGames" [value]="game.label">
+      <span class="mat-option-content"><img width="36px" height="36px" [src]="game.base64Img"><span>{{game.label}}</span></span>
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close>Annuler</button>
   <button mat-button (click)="createSlot()">Ajouter le slot</button>

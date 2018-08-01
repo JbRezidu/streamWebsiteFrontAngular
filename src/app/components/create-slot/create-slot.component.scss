@@ -1,0 +1,16 @@
+div[mat-dialog-actions] {
+  float: right;
+}
+
+mat-form-field {
+  display: block;
+}
+
+.mat-option-content {
+  display: flex;
+  align-items: center;
+
+  img {
+    margin-right: 5px;
+  }
+}

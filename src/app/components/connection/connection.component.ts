@@ -5,7 +5,7 @@ import {AuthenticationActions} from '../../shared/store/actions/authentication/a
 @Component({
   selector: 'app-connection',
   templateUrl: './connection.component.html',
-  styleUrls: ['./connection.component.css']
+  styleUrls: ['./connection.component.scss']
 })
 export class ConnectionComponent {
 

@@ -10,7 +10,7 @@ import {SlotSummaryComponent} from '../slot-summary/slot-summary.component';
 @Component({
   selector: 'app-day',
   templateUrl: './day.component.html',
-  styleUrls: ['./day.component.css'],
+  styleUrls: ['./day.component.scss'],
 })
 export class DayComponent {
 

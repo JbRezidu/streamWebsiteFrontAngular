@@ -1,5 +1,5 @@
-<h1 mat-dialog-title>Ajout d'un créneau de stream</h1>
-{{slot | json}}
+<h1 mat-dialog-title>{{slot.title}} - {{slot.streamerPseudo}}</h1>
+{{slot.description}}
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close>Retour</button>
   <button mat-button (click)="deleteSlot()">Supprimer</button>
