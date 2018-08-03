@@ -26,7 +26,7 @@ import { SlotSummaryComponent } from './components/slot-summary/slot-summary.com
 import { ErrorSnackBarComponent } from './components/snack-bar/error-snack-bar/error-snack-bar.component';
 
 /** SERVICES **/
-import { StreamerService } from './shared/services/streamer/streamer.service';
+import { UserService } from './shared/services/user/user.service';
 import { WeekService } from './shared/services/week/week.service';
 import { AuthenticationService } from './shared/services/authentication/authentication.service';
 import { DayService } from './shared/services/day/day.service';
@@ -65,7 +65,7 @@ import { GameService } from './shared/services/game/game.service';
     NgReduxModule,
   ],
   providers: [
-    StreamerService,
+    UserService,
     AuthenticationService,
     WeekService,
     DayService,

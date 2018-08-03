@@ -1,0 +1,5 @@
+export enum ROLES {
+  STREAMER = 'STREAMER',
+  ADMIN = 'ADMIN',
+  DESIGNER = 'DESIGNER',
+}

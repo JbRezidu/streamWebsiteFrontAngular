@@ -3,12 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class StreamerService {
+export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  getStreamers(): Observable<any> {
-    const url = 'http://localhost:3000/api/streamers';
+  getUsers(): Observable<any> {
+    const url = 'http://localhost:3000/api/users';
     return this.http.get(url);
   }
 }

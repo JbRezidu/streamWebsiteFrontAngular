@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {StreamerService} from './shared/services/streamer/streamer.service';
+import {UserService} from './shared/services/user/user.service';
 import {MatDialog} from '@angular/material/dialog';
 import {ConnectionComponent} from './components/connection/connection.component';
 import {Observable} from 'rxjs';
@@ -13,7 +13,7 @@ import {AuthenticationActions} from './shared/store/actions/authentication/authe
 })
 export class AppComponent {
 
-  @select(['authentication', 'pseudo']) pseudo$: Observable<any>;
+  @select(['authentication', 'connectedUser']) connectedUser$: Observable<any>;
 
   pseudo: string;
 
@@ -25,19 +25,23 @@ export class AppComponent {
 
   array = [{value: 'totot'}, {value: 'tatat'}, {value: 'titi'}];
 
-  streamers = [];
+  users = [];
 
   constructor(
-    private streamerService: StreamerService,
+    private userService: UserService,
     private authenticationActions: AuthenticationActions,
     public dialog: MatDialog
   ) {
     this.anotherOtherTitle = this.title + ' ' + this.anotherTitle;
-    this.streamerService.getStreamers().subscribe(streamers => {
-      this.streamers = streamers;
+    this.userService.getUsers().subscribe(users => {
+      this.users = users;
     });
-    this.pseudo$.subscribe(pseudo => {
-      this.pseudo = pseudo;
+    this.connectedUser$.subscribe(connectedUser => {
+      if (connectedUser) {
+        this.pseudo = connectedUser.pseudo;
+      } else {
+        this.pseudo = null;
+      }
     });
   }
 
@@ -50,6 +54,6 @@ export class AppComponent {
   }
 
   getUsers() {
-    this.streamerService.getStreamers().subscribe();
+    this.userService.getUsers().subscribe();
   }
 }

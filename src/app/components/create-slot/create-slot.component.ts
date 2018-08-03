@@ -156,6 +156,9 @@ export class CreateSlotComponent implements OnInit {
    */
   createSlot() {
     const selectedGame = _find(this.games, { label: this.gameControl.value });
+    if (selectedGame) {
+      delete (selectedGame.base64Img);
+    }
     if (this.gameControl.value && !selectedGame) {
       // TODO : warn that the game was not on the list and will not be added to the stream slot
       this.snackBar.openFromComponent(ErrorSnackBarComponent, {

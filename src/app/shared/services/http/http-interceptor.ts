@@ -21,11 +21,11 @@ export class CustomHttpInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let authReq;
-    if (this.authentication.pseudo) {
+    if ((this.authentication.connectedUser || {}).pseudo) {
       authReq = req.clone({
         setHeaders: {
           Token: this.authentication.token,
-          Streamer: this.authentication.pseudo,
+          User: this.authentication.connectedUser.pseudo,
         }
       });
     }

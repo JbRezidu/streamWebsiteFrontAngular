@@ -1,13 +1,14 @@
-import {AUTHENTICATION_LOGIN, AUTHENTICATION_LOGOUT} from '../../actions/constants';
-import {CustomAction} from '../../store.interfaces';
+import { AUTHENTICATION_LOGIN, AUTHENTICATION_LOGOUT } from '../../actions/constants';
+import { CustomAction } from '../../store.interfaces';
+import { ROLES } from 'src/app/shared/enums/roles.enum';
 
 export interface AuthenticationState {
-  pseudo: string;
+  connectedUser: { pseudo: string; roles: ROLES[] };
   token: string;
 }
 
 const INITIAL_STATE: AuthenticationState = {
-  pseudo: null,
+  connectedUser: null,
   token: null,
 };
 
