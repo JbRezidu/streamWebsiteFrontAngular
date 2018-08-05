@@ -7,14 +7,17 @@ const baseAPI = 'http://localhost:3000';
 export const environment = {
   production: false,
   week: {
-    currentWeek: today => {
+    currentWeek: (today) => {
       return `${baseAPI}/api/weekByDate/${today}`;
     },
     instanciateCurrentWeek: `${baseAPI}/api/instanciateCurrentWeek`,
   },
   game: {
-    getGames: `${baseAPI}/api/games`
-  }
+    getGames: `${baseAPI}/api/games`,
+  },
+  user: {
+    getStreamers: `${baseAPI}/api/streamers`,
+  },
 };
 
 /*

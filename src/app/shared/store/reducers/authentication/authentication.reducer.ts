@@ -1,9 +1,9 @@
 import { AUTHENTICATION_LOGIN, AUTHENTICATION_LOGOUT } from '../../actions/constants';
 import { CustomAction } from '../../store.interfaces';
-import { ROLES } from 'src/app/shared/enums/roles.enum';
+import { IUser } from '../../../interfaces';
 
 export interface AuthenticationState {
-  connectedUser: { pseudo: string; roles: ROLES[] };
+  connectedUser: IUser;
   token: string;
 }
 

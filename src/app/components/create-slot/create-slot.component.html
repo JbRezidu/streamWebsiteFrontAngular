@@ -1,4 +1,13 @@
-<h1 mat-dialog-title>Ajout d'un créneau de stream</h1>
+<h1 mat-dialog-title>
+  Ajout d'un créneau de stream
+  <button *ngIf="displayAddForOtherButton() && !addForOther" (click)="handleOnClickAddForOther()" class="add-for-other-button" mat-button>
+    Créer pour un autre
+  </button>
+  <button *ngIf="displayAddForOtherButton() && addForOther" (click)="handleOnClickAddForMyself()" class="add-for-myself-button" mat-button>
+    Créer pour soi
+  </button>
+</h1>
+
 <mat-form-field>
   <input matInput [(ngModel)]="title" type="text" placeholder="Titre du stream">
 </mat-form-field>
@@ -11,6 +20,14 @@
   <mat-autocomplete #auto="matAutocomplete">
     <mat-option *ngFor="let game of filteredGames" [value]="game.label">
       <span class="mat-option-content"><img *ngIf="game.base64Img" width="36px" height="36px" [src]="game.base64Img"><span>{{game.label}}</span></span>
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+<mat-form-field *ngIf="addForOther">
+  <input matInput placeholder="Streamer" aria-label="Streamer" [matAutocomplete]="auto" [formControl]="streamerControl">
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let streamer of filteredStreamers" [value]="streamer.pseudo">
+      <span class="mat-option-content">{{streamer.pseudo}}</span>
     </mat-option>
   </mat-autocomplete>
 </mat-form-field>

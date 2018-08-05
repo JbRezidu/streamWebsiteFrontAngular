@@ -3,10 +3,8 @@ import { NgRedux } from '@angular-redux/store';
 import { HttpErrorResponse } from '@angular/common/http';
 import { IAppState } from '../../index';
 import { WeekService } from '../../../services/week/week.service';
-import {
-  GET_CURRENT_WEEK_SUCCEED,
-  INSTANCIATE_CURRENT_WEEK_SUCCEED,
-} from '../constants';
+import { GET_CURRENT_WEEK_SUCCEED, INSTANCIATE_CURRENT_WEEK_SUCCEED } from '../constants';
+import { IWeek } from '../../../interfaces/week.interface';
 
 /**
  * Manages week actions
@@ -16,10 +14,7 @@ import {
  */
 @Injectable()
 export class WeekActions {
-  constructor(
-    private ngRedux: NgRedux<IAppState>,
-    private weekService: WeekService
-  ) {}
+  constructor(private ngRedux: NgRedux<IAppState>, private weekService: WeekService) {}
 
   /**
    * Get the current week
@@ -28,7 +23,7 @@ export class WeekActions {
    */
   getCurrentWeek() {
     this.weekService.getCurrentWeek().subscribe(
-      currentWeek => {
+      (currentWeek: IWeek) => {
         this.ngRedux.dispatch({
           type: GET_CURRENT_WEEK_SUCCEED,
           payload: currentWeek,
@@ -49,7 +44,7 @@ export class WeekActions {
    * @memberof WeekActions
    */
   instanciateCurrentWeek() {
-    this.weekService.instanciateCurrentWeek().subscribe(currentWeek => {
+    this.weekService.instanciateCurrentWeek().subscribe((currentWeek: IWeek) => {
       this.ngRedux.dispatch({
         type: INSTANCIATE_CURRENT_WEEK_SUCCEED,
         payload: currentWeek,

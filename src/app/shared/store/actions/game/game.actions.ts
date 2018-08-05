@@ -3,6 +3,7 @@ import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../index';
 import { GameService } from '../../../services/game/game.service';
 import { GET_GAMES_SUCCEED } from '../constants';
+import {IGame} from '../../../interfaces';
 
 /**
  * Actions that manage games
@@ -20,7 +21,7 @@ export class GameActions {
    * @memberof GameActions
    */
   getGames() {
-    this.gameService.getGames().subscribe((games) => {
+    this.gameService.getGames().subscribe((games: IGame[]) => {
       this.ngRedux.dispatch({
         type: GET_GAMES_SUCCEED,
         payload: games,

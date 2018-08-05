@@ -1,8 +1,9 @@
 import { CustomAction } from '../../store.interfaces';
 import { GET_GAMES_SUCCEED } from './../../actions/constants';
+import {IGame} from '../../../interfaces';
 
 export interface GameState {
-  games: { label: string }[];
+  games: IGame[];
 }
 
 const INITIAL_STATE: GameState = {

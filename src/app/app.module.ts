@@ -30,13 +30,14 @@ import { UserService } from './shared/services/user/user.service';
 import { WeekService } from './shared/services/week/week.service';
 import { AuthenticationService } from './shared/services/authentication/authentication.service';
 import { DayService } from './shared/services/day/day.service';
+import { GameService } from './shared/services/game/game.service';
 
 /** ACTIONS **/
 import { WeekActions } from './shared/store/actions/week/week.actions';
 import { AuthenticationActions } from './shared/store/actions/authentication/authentication.actions';
 import { DayActions } from './shared/store/actions/day/day.actions';
 import { GameActions } from './shared/store/actions/game/game.actions';
-import { GameService } from './shared/services/game/game.service';
+import { UserActions } from './shared/store/actions/user/user.actions';
 
 @NgModule({
   declarations: [
@@ -74,13 +75,20 @@ import { GameService } from './shared/services/game/game.service';
     WeekActions,
     DayActions,
     GameActions,
+    UserActions,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: CustomHttpInterceptor,
       multi: true,
     },
   ],
-  entryComponents: [ConnectionComponent, AppComponent, CreateSlotComponent, SlotSummaryComponent, ErrorSnackBarComponent],
+  entryComponents: [
+    ConnectionComponent,
+    AppComponent,
+    CreateSlotComponent,
+    SlotSummaryComponent,
+    ErrorSnackBarComponent,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {

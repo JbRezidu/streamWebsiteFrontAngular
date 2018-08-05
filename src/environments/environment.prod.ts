@@ -9,6 +9,9 @@ export const environment = {
     instanciateCurrentWeek: `${baseAPI}/api/instanciateCurrentWeek`,
   },
   game: {
-    getGames: `${baseAPI}/api/games`
-  }
+    getGames: `${baseAPI}/api/games`,
+  },
+  user: {
+    getStreamers: `${baseAPI}/api/streamers`,
+  },
 };

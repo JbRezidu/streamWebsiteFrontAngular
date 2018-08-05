@@ -1,4 +1,4 @@
-<ng-container *ngIf="(slot.slot || {}).title">
-  <div>{{(slot.slot || {}).title}}</div>
-  <div>{{(slot.slot || {}).streamerPseudo}}</div>
+<ng-container *ngIf="(slot || {}).title">
+  <div>{{(slot || {}).title}}</div>
+  <div>{{(slot.streamer || {}).pseudo}}</div>
 </ng-container>

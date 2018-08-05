@@ -1,13 +1,8 @@
 import { GET_CURRENT_WEEK_SUCCEED, INSTANCIATE_CURRENT_WEEK_SUCCEED } from '../../actions/constants';
 import { CustomAction } from '../../store.interfaces';
+import {IWeek} from '../../../interfaces/week.interface';
 
-export interface WeekState {
-  days: any[];
-  startDate: string;
-  endDate: string;
-}
-
-const INITIAL_STATE: WeekState = {
+const INITIAL_STATE: IWeek = {
   days: [],
   startDate: null,
   endDate: null,

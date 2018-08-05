@@ -1,6 +1,6 @@
-<h1 mat-dialog-title>{{slot.title}} - {{slot.streamerPseudo}}</h1>
+<h1 mat-dialog-title>{{slot.title}} - {{(slot.streamer || {}).pseudo}}</h1>
 {{slot.description}}
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close>Retour</button>
-  <button mat-button (click)="deleteSlot()">Supprimer</button>
+  <button *ngIf="canDeleteSlot()" mat-button (click)="deleteSlot()">Supprimer</button>
 </div>

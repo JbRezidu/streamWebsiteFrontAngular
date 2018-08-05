@@ -1,29 +1,30 @@
-import {Component} from '@angular/core';
-import {UserService} from './shared/services/user/user.service';
-import {MatDialog} from '@angular/material/dialog';
-import {ConnectionComponent} from './components/connection/connection.component';
-import {Observable} from 'rxjs';
-import {select} from '@angular-redux/store';
-import {AuthenticationActions} from './shared/store/actions/authentication/authentication.actions';
+import { Component } from '@angular/core';
+import { UserService } from './shared/services/user/user.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConnectionComponent } from './components/connection/connection.component';
+import { Observable } from 'rxjs';
+import { select } from '@angular-redux/store';
+import { AuthenticationActions } from './shared/store/actions/authentication/authentication.actions';
+import {IUser} from './shared/interfaces';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-
-  @select(['authentication', 'connectedUser']) connectedUser$: Observable<any>;
+  @select(['authentication', 'connectedUser'])
+  connectedUser$: Observable<IUser>;
 
   pseudo: string;
 
   title = 'Alkor_TV';
 
-  anotherTitle = 'On s\'amuse en plus';
+  anotherTitle = "On s'amuse en plus";
 
   anotherOtherTitle: string;
 
-  array = [{value: 'totot'}, {value: 'tatat'}, {value: 'titi'}];
+  array = [{ value: 'totot' }, { value: 'tatat' }, { value: 'titi' }];
 
   users = [];
 
@@ -33,10 +34,10 @@ export class AppComponent {
     public dialog: MatDialog
   ) {
     this.anotherOtherTitle = this.title + ' ' + this.anotherTitle;
-    this.userService.getUsers().subscribe(users => {
+    this.userService.getUsers().subscribe((users) => {
       this.users = users;
     });
-    this.connectedUser$.subscribe(connectedUser => {
+    this.connectedUser$.subscribe((connectedUser) => {
       if (connectedUser) {
         this.pseudo = connectedUser.pseudo;
       } else {
@@ -46,7 +47,7 @@ export class AppComponent {
   }
 
   login() {
-    this.dialog.open(ConnectionComponent, {width: '250px'});
+    this.dialog.open(ConnectionComponent, { width: '250px' });
   }
 
   logout() {
