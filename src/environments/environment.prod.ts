@@ -5,7 +5,8 @@ export const environment = {
   week: {
     currentWeek: (today) => {
       return `${baseAPI}/api/weekByDate/${today}`;
-    }
+    },
+    instanciateCurrentWeek: `${baseAPI}/api/instanciateCurrentWeek`,
   },
   game: {
     getGames: `${baseAPI}/api/games`
