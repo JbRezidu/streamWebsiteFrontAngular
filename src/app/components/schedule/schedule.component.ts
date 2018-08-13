@@ -13,7 +13,7 @@ export class ScheduleComponent implements OnInit {
   @select(['week'])
   week$: Observable<IWeek>;
 
-  weekDays = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'];
+  weekDays = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
 
   week: IWeek;
 

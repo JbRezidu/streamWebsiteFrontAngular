@@ -22,10 +22,10 @@ export class SlotComponent {
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
 
   initSlot() {
-    this.renderer.setStyle(
-      this.elementRef.nativeElement,
-      'backgroundColor',
-      (this.slot.streamer || <IUser>{}).color || 'grey'
-    );
+    // this.renderer.setStyle(
+    //   this.elementRef.nativeElement,
+    //   'backgroundColor',
+    //   (this.slot.streamer || <IUser>{}).color || 'grey'
+    // );
   }
 }

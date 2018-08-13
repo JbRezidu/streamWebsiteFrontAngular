@@ -1,8 +1,11 @@
 .day {
-  display: block;
-  width: 210px;
-  float: left;
-  border: 1px solid black;
-  padding: 5px;
-  margin: 5px;
+  min-width: 175px;
+  margin: 2px;
+  // float: left;
+}
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
